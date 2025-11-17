@@ -1,104 +1,210 @@
-<h1 align="center">SMART SURVILLANCE SYSTEM</h1>
+## 🛡️ Smart Surveillance System using Face Recognition (CNN)
 
-<p align="center">
- <a target="_blank" href="https://drive.google.com/file/d/1mwXoAp8VMO9XeV4o94l6xOgLkuQERjaD/view?usp=sharing">Video Demo</a> 
-</p>
+A Smart Home Security & Surveillance System that uses Convolutional Neural Networks (CNN) for face recognition. The system detects and verifies visitors using a pre-trained CNN model. When an unknown visitor is detected, the system sends an email alert with the captured image.
 
-    
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#salient-features">Salient Features</a></li>
-       <li><a href="#built-with">Built With</a></li>
-        <li><a href="#compatible-platforms">Compatible Platforms</a></li>    
-      </ul>
-    </li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#navigating-through-the-app">Navigating through the App</a></li><ul>
-      </ul>
-  </ol>
-</details>
+This project combines:
 
-<!-- ABOUT THE PROJECT -->
+Python (Flask) for face recognition & email notifications
 
-## About The Project
-* Face Recognition Security System project built during Microsoft Engage 2022 program. 
-* This programme processes frames from live video and compares detected faces against a set of known face encodings. 
-* If there is no match found, the person is considered to be an intruder and an email is sent with an image of the intruder by invoking a shell script..
+Node.js for backend routing
 
-### Salient Features
-* Real Time Security
-* It  deals with non frontal face detection.
-* Identify unknown persons that are not registered and send notifications via emails with current date and time.
+OpenCV for real-time camera processing
 
+CNN-based face recognition model
 
-### Built With
+Web UI using HTML templates
 
-###  Tech Stack: 
-* Front-end :
-  HTML5, CSS3,Javascript, Bootstrap
-* Back-end :
-  Flask, Python
-* Face Recogntion library: 
- Opencv, cv2, os, sys, face_recognition
+📌 Features
+🔍 Face Recognition (CNN-Based)
 
-### Compatible Platforms
-Laptops, Desktops and Tablet PCs
+Uses CNN embeddings to detect known vs unknown faces.
 
+Dataset stored inside dataset_family/.
 
-## Getting Started
-To install and run the project on your local system, following are the requirements:
-### Prerequisites
-The `requirements.txt` file should list all Python libraries that your notebooks
-depend on, and they will be installed using:
+🎥 Real-Time Surveillance
 
-```
+Captures frames using webcam / external camera.
+
+Recognizes faces in real time.
+
+📩 Automatic Email Alert
+
+When an unknown face appears, system triggers:
+
+Image capture
+
+Email alert via Gmail SMTP
+
+Timestamped logs
+
+🌐 Web Interface
+
+Simple dashboard built using:
+
+Node.js
+
+Express
+
+HTML templates
+
+🧠 Dual Application Architecture
+
+app.py → Handles HTTP server for recognition, API endpoints
+
+face_recognition.py → CNN model detection logic
+
+index.js → Node server for UI routes and API requests
+
+📂 Project Structure
+`Home-security-system/
+│
+├── dataset_family/            # Training images for family members
+│   ├── abhishek.jpeg
+│   ├── amisha.jpeg
+│   ├── ...
+│
+├── templates/                 # Frontend HTML templates
+│
+├── handlers/                  # Node route handlers
+├── models/                    # Node models (if any)
+├── public/                    # CSS, JS, static assets
+├── routes/                    # Node routes
+│
+├── index.js                   # Node backend
+├── app.py                     # Python Flask server
+├── face_recognition.py        # CNN-based face recognition logic
+│
+├── mailme.sh                  # Shell script for email config (if used)
+│
+├── package.json               # Node dependencies
+├── package-lock.json
+├── requirements.txt           # Python dependencies
+└── .gitignore`
+
+🛠️ Technologies Used
+🔧 Backend
+
+Python 3.x
+
+Flask
+
+Node.js
+
+Express.js
+
+🤖 Machine Learning
+
+TensorFlow / Keras
+
+CNN for feature extraction
+
+OpenCV
+
+NumPy
+
+📡 Communication
+
+SMTP (Email Service)
+
+API Integration between Flask & Node
+
+💻 Frontend
+
+HTML5
+
+CSS
+
+JavaScript
+
+⚙️ Installation & Setup
+1️⃣ Clone the Repository
+https://github.com/aashi-121/Face-Recognition-using-CNN-for-Smart-Surveillance-Applications.git
+cd Home-security-system
+
+2️⃣ Install Python Dependencies
 pip install -r requirements.txt
-```
 
-### Instruction
+3️⃣ Install Node Dependencies
+npm install
 
-To run the application run the command 
-```sh
-  python app.py
-```
+4️⃣ Configure Email Alerts
 
-* Web Application
+Edit your email credentials in app.py:
 
-To separately run the Web application on your local host, perform the following steps:
-
-Run the following commands to start the server side.
-
-```sh
-  npm install && npm start
-```
-Run the following commands to start the client side and run it on your local host
-```sh
-  cd templates
-```
-```sh
-  node index.js
-```
-## Features & Interfaces (Glimpses of Web Application):
-#### Landing page
-![Screenshot (51)](https://user-images.githubusercontent.com/77895187/170818251-df799419-cb49-4e54-826a-9521ffc30ab5.png)
-
-#### Performing Face Recognition
-![Screenshot (56)](https://user-images.githubusercontent.com/77895187/170836497-aaee0a01-f164-4250-b084-189a519525e8.png)
+SENDER_EMAIL = "your_email@gmail.com"
+SENDER_PASSWORD = "your_app_password"
 
 
-####  This programme processes frames from live video and compares detected faces against a set of known face encodings.
-https://user-images.githubusercontent.com/77895187/170843516-f8a967de-abe2-4252-9dd8-068ede012c2c.mp4
+Make sure to generate a Google App Password if using Gmail.
+
+5️⃣ Run Python Recognition Server
+python app.py
+
+6️⃣ Run Node Backend
+node index.js
+
+🚀 Usage Flow
+
+Start the Python & Node servers
+
+Open the web interface:
+
+http://localhost:3000
 
 
-#### Services
-![Screenshot (52)](https://user-images.githubusercontent.com/77895187/170818250-1e3b6c17-4aa0-41f5-b5c8-94373752df7e.png)
+Live camera feed starts
+
+CNN model detects face
+
+If face is known → access granted
+
+If unknown → email alert sent with captured image
+
+🧪 Dataset Details
+
+Your dataset is stored in:
+
+/dataset_family/
+
+
+Each image is used to generate embeddings for CNN.
+
+Example:
+
+abhishek.jpeg  
+amisha.jpeg  
+harshit.jpeg  
+...
+
+
+Add more images for higher accuracy.
+
+📧 Email Alert Example
+
+When an unknown face is detected, the system sends:
+
+Subject: "⚠️ Alert! Unknown person detected"
+
+Body: Includes time + message
+
+Attachment: Captured intruder image
+
+🤝 Contribution
+
+Feel free to submit:
+
+Pull Requests
+
+Bug Fixes
+
+Feature Enhancements
+
+📜 License
+
+This project is licensed under the MIT License.
+
+✨ Author
+
+Aaash and Shreshtha Kushwaha
+B.E. CSE (AIML)
+Smart Home Security Capstone Project
