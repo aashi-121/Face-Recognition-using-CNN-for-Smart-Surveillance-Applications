@@ -1,4 +1,4 @@
-## 🛡️ Smart Surveillance System using Face Recognition (CNN)
+# 🛡️ Smart Surveillance System using Face Recognition (CNN)
 
 A Smart Home Security & Surveillance System that uses Convolutional Neural Networks (CNN) for face recognition. The system detects and verifies visitors using a pre-trained CNN model. When an unknown visitor is detected, the system sends an email alert with the captured image.
 
@@ -55,8 +55,8 @@ face_recognition.py → CNN model detection logic
 
 index.js → Node server for UI routes and API requests
 
-📂 Project Structure
-`Home-security-system/
+`📂 Project Structure
+Home-security-system/
 │
 ├── dataset_family/            # Training images for family members
 │   ├── abhishek.jpeg
@@ -80,6 +80,7 @@ index.js → Node server for UI routes and API requests
 ├── package-lock.json
 ├── requirements.txt           # Python dependencies
 └── .gitignore`
+`
 
 🛠️ Technologies Used
 🔧 Backend
