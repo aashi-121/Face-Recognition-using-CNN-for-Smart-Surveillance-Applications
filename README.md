@@ -1,210 +1,216 @@
-# 🛡️ Smart Surveillance System using Face Recognition (CNN)
+🛡️ Smart Surveillance System using Deep CNN-Based Face Recognition
+A Real-Time Smart Surveillance Framework using Convolutional Neural Networks (CNNs), Face Embeddings, and Deep Learning–Based Identification
 
-A Smart Home Security & Surveillance System that uses Convolutional Neural Networks (CNN) for face recognition. The system detects and verifies visitors using a pre-trained CNN model. When an unknown visitor is detected, the system sends an email alert with the captured image.
+This system automatically detects and recognizes individuals using FaceNet embeddings + MTCNN face detection. It compares live camera frames against a pre-enrolled database of known users. If an unknown person appears, the system captures the face and sends email alerts, triggers logging, and updates the surveillance UI.
 
-This project combines:
+This implementation follows the methodology described in your research paper:
 
-Python (Flask) for face recognition & email notifications
+✔ Dataset Support: LFW, VGGFace2, CelebA, Custom dataset
+✔ Face Detection: MTCNN
+✔ Face Embeddings: FaceNet (512-D feature vectors)
+✔ Similarity Matching: Cosine + FAISS
+✔ Real-Time Processing: OpenCV
+✔ Application Layer: Python Flask (API) + Node.js (Web UI)
+✔ Optional: Emotion Recognition using CNN (FER2013 dataset)
 
-Node.js for backend routing
+📌 Key Features
+🔍 1. CNN-Based Face Recognition
+Uses FaceNet for generating 512-D embeddings
 
-OpenCV for real-time camera processing
+Dataset examples:
 
-CNN-based face recognition model
+LFW (benchmark verification)
 
-Web UI using HTML templates
+VGGFace2 (high-variance training)
 
-📌 Features
-🔍 Face Recognition (CNN-Based)
+CelebA (additional face images)
 
-Uses CNN embeddings to detect known vs unknown faces.
+Custom images (dataset_family/)
 
-Dataset stored inside dataset_family/.
+Embedding comparison using Cosine Similarity
 
-🎥 Real-Time Surveillance
+FAISS index for fast nearest-neighbor search
 
-Captures frames using webcam / external camera.
+Detects:
 
-Recognizes faces in real time.
+Known Person → “Access Granted”
 
-📩 Automatic Email Alert
+Unknown Person → Email Alert
 
-When an unknown face appears, system triggers:
+🎥 2. Real-Time Surveillance
+Live webcam feed
 
-Image capture
+MTCNN detects face bounding boxes
 
-Email alert via Gmail SMTP
+Preprocessing + embedding extraction
 
-Timestamped logs
+Real-time inference using optimized CPU/GPU pipelines
 
-🌐 Web Interface
+📩 3. Automatic Email Alerts for Unknown Faces
+When an unknown person appears:
 
-Simple dashboard built using:
+✔ Captures face image
+✔ Sends alert using Gmail SMTP
+✔ Attaches detected person snapshot
+✔ Logs the timestamp & identity confidence
 
-Node.js
+🌐 4. Smart Web Interface (Node.js + Express)
+Frontend Dashboard:
 
-Express
+Live Monitoring Window
 
-HTML templates
+Alert History
 
-🧠 Dual Application Architecture
+Known Persons List
 
-app.py → Handles HTTP server for recognition, API endpoints
+System Status
 
-face_recognition.py → CNN model detection logic
+Backend:
 
-index.js → Node server for UI routes and API requests
+Node.js (Express) for routing
 
-📂 Project Structure
-Home-security-system/
-│
-├── dataset_family/            # Training images for family members
-│   ├── abhishek.jpeg
-│   ├── amisha.jpeg
-│   ├── ...
-│
-├── templates/                 # Frontend HTML templates
-│
-├── handlers/                  # Node route handlers
-├── models/                    # Node models (if any)
-├── public/                    # CSS, JS, static assets
-├── routes/                    # Node routes
-│
-├── index.js                   # Node backend
-├── app.py                     # Python Flask server
-├── face_recognition.py        # CNN-based face recognition logic
-│
-├── mailme.sh                  # Shell script for email config (if used)
-│
-├── package.json               # Node dependencies
-├── package-lock.json
-├── requirements.txt           # Python dependencies
-└── .gitignore`
+Communicates with Flask API for recognition
+
+🧠 5. Deep Learning Pipeline 
+Face Detection
+MTCNN
+
+Landmark-based alignment
+
+Cropping + resizing (160×160)
+
+Face Embeddings
+FaceNet model (pretrained)
+
+Output: 512-D normalized vector
+
+Similarity Matching
+Cosine similarity
+
+FAISS Index (optional)
+
+Threshold-based classification
+
+Emotion Recognition (Optional)
+Trained on FER2013
+
+Predicts 7 emotions:
+angry, disgust, fear, happy, neutral, sad, surprise
+
+
 
 🛠️ Technologies Used
 🔧 Backend
+Python Flask
 
-Python 3.x
+Node.js + Express
 
-Flask
-
-Node.js
-
-Express.js
+REST APIs for communication
 
 🤖 Machine Learning
+TensorFlow/Keras
 
-TensorFlow / Keras
+MTCNN
 
-CNN for feature extraction
+FaceNet
 
 OpenCV
 
-NumPy
+Scikit-learn (ROC/AUC)
 
 📡 Communication
+Gmail SMTP
 
-SMTP (Email Service)
-
-API Integration between Flask & Node
+Flask ↔ Node API integration
 
 💻 Frontend
-
-HTML5
+HTML
 
 CSS
 
 JavaScript
 
-⚙️ Installation & Setup
-1️⃣ Clone the Repository
-https://github.com/aashi-121/Face-Recognition-using-CNN-for-Smart-Surveillance-Applications.git
-cd Home-security-system
+🚀 Installation & Setup
+1️⃣ Clone Repository
 
+git clone https://github.com/aashi-121/Smart-Surveillance-System.git
+cd Smart-Surveillance-System
 2️⃣ Install Python Dependencies
+bash
+Copy code
 pip install -r requirements.txt
+If TensorFlow errors:
 
+bash
+Copy code
+pip install tensorflow==2.12.0
 3️⃣ Install Node Dependencies
+
 npm install
+📥 Dataset Setup
+LFW Dataset
+https://www.kaggle.com/datasets/jessicali9530/lfw-dataset
 
-4️⃣ Configure Email Alerts
+VGGFace2 Dataset
+https://www.kaggle.com/datasets/hearfool/vggface2
 
-Edit your email credentials in app.py:
+FER2013 Dataset (Emotion Detection)
+https://www.kaggle.com/datasets/msambare/fer2013
+
+Place datasets inside:
+
+
+datasets/
+🧬 Embedding Generation (FaceNet)
+Step 1: Enroll Faces
+
+python scripts/enroll.py
+Step 2: Build FAISS Index
+
+python scripts/build_index.py
+🎥 Run Real-Time Surveillance
+
+python scripts/realtime_demo.py
+🙂 Run Real-Time Emotion Detection 
+
+
+python scripts/emotion_realtime.py
+📊 LFW Evaluation 
+
+
+python scripts/evaluate_lfw.py
+Outputs:
+
+ROC curve
+
+Verification accuracy
+
+Best threshold
+
+Similarity matrix
+
+📧 Email Alert Configuration
+In app.py, edit:
+
+python
 
 SENDER_EMAIL = "your_email@gmail.com"
 SENDER_PASSWORD = "your_app_password"
+Generate app password for Gmail:
+https://myaccount.google.com/apppasswords
 
+🔮 Future Improvements
+Integrate ArcFace (InsightFace)
 
-Make sure to generate a Google App Password if using Gmail.
+Add door-lock control via IoT
 
-5️⃣ Run Python Recognition Server
-python app.py
+Mobile app interface
 
-6️⃣ Run Node Backend
-node index.js
+Add motion detection
 
-🚀 Usage Flow
+Add database for logging
 
-Start the Python & Node servers
-
-Open the web interface:
-
-http://localhost:3000
-
-
-Live camera feed starts
-
-CNN model detects face
-
-If face is known → access granted
-
-If unknown → email alert sent with captured image
-
-🧪 Dataset Details
-
-Your dataset is stored in:
-
-/dataset_family/
-
-
-Each image is used to generate embeddings for CNN.
-
-Example:
-
-abhishek.jpeg  
-amisha.jpeg  
-harshit.jpeg  
-...
-
-
-Add more images for higher accuracy.
-
-📧 Email Alert Example
-
-When an unknown face is detected, the system sends:
-
-Subject: "⚠️ Alert! Unknown person detected"
-
-Body: Includes time + message
-
-Attachment: Captured intruder image
-
-🤝 Contribution
-
-Feel free to submit:
-
-Pull Requests
-
-Bug Fixes
-
-Feature Enhancements
-
-📜 License
-
-This project is licensed under the MIT License.
-
-✨ Author
-
-Aaash and Shreshtha Kushwaha
+✨ Authors
+Aashi & Shreshtha Kushwaha
 B.E. CSE (AIML)
-Smart Home Security Capstone Project
+Smart Home Surveillance Capstone Project
