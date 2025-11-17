@@ -55,7 +55,7 @@ face_recognition.py → CNN model detection logic
 
 index.js → Node server for UI routes and API requests
 
-`📂 Project Structure
+📂 Project Structure
 Home-security-system/
 │
 ├── dataset_family/            # Training images for family members
@@ -80,7 +80,6 @@ Home-security-system/
 ├── package-lock.json
 ├── requirements.txt           # Python dependencies
 └── .gitignore`
-`
 
 🛠️ Technologies Used
 🔧 Backend
