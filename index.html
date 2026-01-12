@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Real-Time Emotion Recognition</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Real-Time Emotion Recognition</h1>
+    <div class="video-container">
+      <!-- Live webcam feed with autoplay, playsinline and muted for proper behavior -->
+      <video id="video" autoplay playsinline muted></video>
+      <!-- Canvas overlay for drawing bounding boxes and labels -->
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="controls">
+      <button id="startBtn">Start</button>
+      <button id="stopBtn" disabled>Stop</button>
+      <button id="captureBtn" disabled>Capture &amp; Download</button>
+    </div>
+    <p id="result">Camera is stopped</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
